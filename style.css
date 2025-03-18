@@ -1,0 +1,363 @@
+body {
+  background-color: #9245f5;
+}
+
+#main-content {
+    position: relative;
+    z-index: 1;
+}
+
+.row {
+  display: block;
+  width: 100vw;
+  height: 125px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: -35px;
+  margin-left: -33px;
+}
+
+.first-row {
+    margin-top: 50px;
+}
+
+.row .hexagon {
+  position: relative;
+  width: 100px;
+  height: 57.74px;
+  background-color: white;
+  margin: 32.87px 2px;
+  display: block;
+  transition: all 0.2s linear;
+  transform: perspective(1000px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.row .hexagon::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  top: 100%;
+  width: 0;
+  border-top: 28.87px solid white;
+  transition: all 0.2s linear;
+}
+
+.row .hexagon::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  bottom: 100%;
+  border-bottom: 28.87px solid white;
+  transition: all 0.2s linear;
+}
+
+.row .hexagon:hover {
+  background: #FFAE1A;
+}
+
+.row .hexagon:hover::after {
+  border-top: 28.87px solid #FFAE1A;
+}
+
+.row .hexagon:hover::before {
+  border-bottom: 28.87px solid #FFAE1A;
+}
+
+.row .hexagon-red {
+  position: relative;
+  width: 100px;
+  height: 57.74px;
+  background-color: red;
+  margin: 32.87px 2px;
+  display: block;
+  transition: all 0.2s linear;
+  transform: perspective(1000px);
+}
+
+.row .hexagon-red::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  top: 100%;
+  width: 0;
+  border-top: 28.87px solid red;
+  transition: all 0.2s linear;
+}
+
+.row .hexagon-red::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  bottom: 100%;
+  border-bottom: 28.87px solid red;
+  transition: all 0.2s linear;
+}
+
+.row .hexagon-red:hover {
+  background: #FFAE1A;
+}
+
+.row .hexagon-red:hover::after {
+  border-top: 28.87px solid #FFAE1A;
+}
+
+.row .hexagon-red:hover::before {
+  border-bottom: 28.87px solid #FFAE1A;
+}
+
+.row .hexagon-green {
+  position: relative;
+  width: 100px;
+  height: 57.74px;
+  background-color: green;
+  margin: 32.87px 2px;
+  display: block;
+  transition: all 0.2s linear;
+  transform: perspective(1000px);
+}
+
+.row .hexagon-green::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  top: 100%;
+  width: 0;
+  border-top: 28.87px solid green;
+  transition: all 0.2s linear;
+}
+
+.row .hexagon-green::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  bottom: 100%;
+  border-bottom: 28.87px solid green;
+  transition: all 0.2s linear;
+}
+
+.row .hexagon-green:hover {
+  background: #FFAE1A;
+}
+
+.row .hexagon-green:hover::after {
+  border-top: 28.87px solid #FFAE1A;
+}
+
+.row .hexagon-green:hover::before {
+  border-bottom: 28.87px solid #FFAE1A;
+}
+
+.row .hexagon-nocolor {
+  position: relative;
+  width: 100px;
+  height: 57.74px;
+  background-color: white;
+  margin: 32.87px 2px;
+  display: block;
+  transition: all 0.2s linear;
+  transform: perspective(1000px);
+}
+
+.row .hexagon-nocolor::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  top: 100%;
+  width: 0;
+  border-top: 28.87px solid white;
+  transition: all 0.2s linear;
+}
+
+.row .hexagon-nocolor::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  bottom: 100%;
+  border-bottom: 28.87px solid white;
+  transition: all 0.2s linear;
+}
+
+.row .hexagon-nocolor:hover {
+  background: #FFAE1A;
+}
+
+.row .hexagon-nocolor:hover::after {
+  border-top: 28.87px solid #FFAE1A;
+}
+
+.row .hexagon-nocolor:hover::before {
+  border-bottom: 28.87px solid #FFAE1A;
+}
+
+.row.row-moved {
+  margin-left: 19px;
+}
+
+.editable-text {
+    position: fixed;
+    top: 20px;
+    font-size: 30px;
+    padding: 5px 10px;
+    z-index: 1000;
+    -webkit-text-stroke: none;
+    text-stroke: none;
+    font-weight: bold;
+    text-shadow: 2px 2px rgba(255, 255, 255, 0.5);
+}
+
+.top-right {
+    right: 20px;
+}
+
+.top-left {
+    left: 20px;
+}
+
+.hexagon.active-green {
+  background-color: green;
+}
+
+.hexagon.active-green::after {
+  border-top-color: green;
+}
+
+.hexagon.active-green::before {
+  border-bottom-color: green;
+}
+
+.hexagon.active-red {
+  background-color: red;
+}
+
+.hexagon.active-red::after {
+  border-top-color: red;
+}
+
+.hexagon.active-red::before {
+  border-bottom-color: red;
+}
+
+.hexagon.active-green:hover,
+.hexagon.active-green:hover::after,
+.hexagon.active-green:hover::before,
+.hexagon.active-red:hover,
+.hexagon.active-red:hover::after,
+.hexagon.active-red:hover::before {
+  background-color: inherit !important;
+  border-top-color: inherit !important;
+  border-bottom-color: inherit !important;
+}
+
+#splash-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: white;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+}
+
+#splash-screen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.fade-out {
+    opacity: 0;
+}
+
+.watermark {
+  position: fixed; /* لتثبيته في مكانه */
+  top: 10px; /* لتحديد المسافة من الأعلى */
+  left: 50%; /* لجعله في المنتصف أفقيًا */
+  transform: translateX(-50%); /* لضبط التوسيط الدقيق */
+  font-size: 20px; /* يمكنك تعديل حجم الخط */
+  font-weight: bold; /* لجعله عريضًا */
+  color: rgb(107, 0, 91); /* اللون الأسود */
+  /* -webkit-text-stroke: 1px white; /* إزالة الحافة البيضاء */
+  /* text-stroke: 1px white; /* إزالة الحافة البيضاء */
+  text-shadow: 2px 2px rgb(255, 238, 0); /* ظل أبيض شفاف */
+  z-index: 1001; /* يجب أن يكون أعلى من محتوى الصفحة ولكن أقل من شاشة البداية إذا كنت تريد إخفاءه مؤقتًا */
+  padding: 5px 10px; /* لإضافة بعض المساحة حول النص */
+  background-color: rgb(255, 255, 255); /* خلفية شفافة قليلاً لتحسين الرؤية */
+  border-radius: 5px; /* حواف دائرية للخلفية */
+  text-align: center; /* تأكد من توسيط النص داخليًا إذا لزم الأمر */
+}
+
+.score-input {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  font-size: 20px; /* زيادة حجم الخط إلى 20px (يمكنك تعديل هذه القيمة) */
+  margin: 5px 0;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  -moz-appearance: textfield;
+}
+
+.score-input::-webkit-outer-spin-button,
+.score-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.increment, .decrement {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  line-height: 1;
+  width: 20px;
+  height: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+}
+
+.increment::before {
+  content: "\25B2";
+  font-size: 14px;
+}
+
+.decrement::before {
+  content: "\25BC";
+  font-size: 14px;
+}
+

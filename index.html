@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>SVG Hexagon Generator</title>
+    <link rel="stylesheet" href="https://public.codepenassets.com/css/normalize-5.0.0.min.css">
+<link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:400,400italic,700,700italic|Roboto+Condensed|Roboto+Slab'><link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+    <div class="watermark">
+        @AseelAntar تصميم: أصيل بن عنتر
+    </div>
+
+    <div id="splash-screen">
+        <img src="Image_background.png" alt="صورة الخلفية">
+    </div>
+
+    <div id="main-content">
+        <audio id="clickSound" src="click.mp3"></audio>
+
+        <div class="editable-text top-right">
+            <span contenteditable="true" style="color: green; font-weight: bold; text-shadow: 2px 2px rgba(255, 255, 255, 0.5);">الفريق الأخضر</span>
+            <div class="number-input-container">
+                <button class="increment"></button>
+                <input type="number" min="0" value="0" class="score-input" lang="en" id="green-score">
+                <button class="decrement"></button>
+            </div>
+        </div>
+        <div class="editable-text top-left">
+            <span contenteditable="true" style="color: red; font-weight: bold; text-shadow: 2px 2px rgba(255, 255, 255, 0.5);">الفريق الأحمر</span>
+            <div class="number-input-container">
+                <button class="increment"></button>
+                <input type="number" min="0" value="0" class="score-input" lang="en" id="red-score">
+                <button class="decrement"></button>
+            </div>
+        </div>
+
+        <div class="row first-row">
+            <div class="hexagon-nocolor" id="corner-white-top-left"></div>
+            <div class="hexagon-red"></div>
+            <div class="hexagon-red"></div>
+            <div class="hexagon-red"></div>
+            <div class="hexagon-red"></div>
+            <div class="hexagon-red"></div>
+            <div class="hexagon-red"></div>
+        </div>
+
+        <div class="row row-moved">
+            <div class="hexagon-green"></div>
+            <div class="hexagon" id="white-cell-1"></div>
+            <div class="hexagon" id="white-cell-2"></div>
+            <div class="hexagon" id="white-cell-3"></div>
+            <div class="hexagon" id="white-cell-4"></div>
+            <div class="hexagon" id="white-cell-5"></div>
+            <div class="hexagon-green"></div>
+        </div>
+
+        <div class="row">
+            <div class="hexagon-green"></div>
+            <div class="hexagon" id="white-cell-6"></div>
+            <div class="hexagon" id="white-cell-7"></div>
+            <div class="hexagon" id="white-cell-8"></div>
+            <div class="hexagon" id="white-cell-9"></div>
+            <div class="hexagon" id="white-cell-10"></div>
+            <div class="hexagon-green"></div>
+        </div>
+
+        <div class="row row-moved">
+            <div class="hexagon-green"></div>
+            <div class="hexagon" id="white-cell-11"></div>
+            <div class="hexagon" id="white-cell-12"></div>
+            <div class="hexagon" id="white-cell-13"></div>
+            <div class="hexagon" id="white-cell-14"></div>
+            <div class="hexagon" id="white-cell-15"></div>
+            <div class="hexagon-green"></div>
+        </div>
+
+        <div class="row">
+            <div class="hexagon-green"></div>
+            <div class="hexagon" id="white-cell-16"></div>
+            <div class="hexagon" id="white-cell-17"></div>
+            <div class="hexagon" id="white-cell-18"></div>
+            <div class="hexagon" id="white-cell-19"></div>
+            <div class="hexagon" id="white-cell-20"></div>
+            <div class="hexagon-green"></div>
+        </div>
+
+        <div class="row row-moved">
+            <div class="hexagon-green"></div>
+            <div class="hexagon" id="white-cell-21"></div>
+            <div class="hexagon" id="white-cell-22"></div>
+            <div class="hexagon" id="white-cell-23"></div>
+            <div class="hexagon" id="white-cell-24"></div>
+            <div class="hexagon" id="white-cell-25"></div>
+            <div class="hexagon-green"></div>
+        </div>
+
+        <div class="row">
+            <div class="hexagon-nocolor" id="corner-white-bottom-left"></div>
+            <div class="hexagon-red"></div>
+            <div class="hexagon-red"></div>
+            <div class="hexagon-red"></div>
+            <div class="hexagon-red"></div>
+            <div class="hexagon-red"></div>
+            <div class="hexagon-red"></div>
+        </div>
+    </div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const splashScreen = document.getElementById('splash-screen');
+    setTimeout(function() {
+      splashScreen.classList.add('fade-out');
+      setTimeout(function() {
+        splashScreen.style.display = 'none';
+      }, 500);
+    }, 1500);
+
+    const greenScoreInput = document.getElementById('green-score');
+    const redScoreInput = document.getElementById('red-score');
+    const incrementButtons = document.querySelectorAll('.increment');
+    const decrementButtons = document.querySelectorAll('.decrement');
+
+    // استعادة القيم من localStorage عند تحميل الصفحة
+    const storedGreenScore = localStorage.getItem('greenScore');
+    if (storedGreenScore) {
+      greenScoreInput.value = storedGreenScore;
+    }
+
+    const storedRedScore = localStorage.getItem('redScore');
+    if (storedRedScore) {
+      redScoreInput.value = storedRedScore;
+    }
+
+    incrementButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const input = this.parentNode.querySelector('.score-input');
+        input.stepUp();
+        // حفظ القيم في localStorage عند التغيير
+        localStorage.setItem('greenScore', greenScoreInput.value);
+        localStorage.setItem('redScore', redScoreInput.value);
+      });
+    });
+
+    decrementButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const input = this.parentNode.querySelector('.score-input');
+        input.stepDown();
+        // حفظ القيم في localStorage عند التغيير
+        localStorage.setItem('greenScore', greenScoreInput.value);
+        localStorage.setItem('redScore', redScoreInput.value);
+      });
+    });
+  });
+
+  const arabicLetters = ['أ', 'ب', 'ت', 'ث', 'ج', 'ح', 'خ', 'د', 'ذ', 'ر', 'ز', 'س', 'ش', 'ص', 'ض', 'ط', 'ظ', 'ع', 'غ', 'ف', 'ق', 'ك', 'ل', 'م', 'ن', 'ه', 'و', 'ي'];
+  const whiteCells = [];
+  const clickSound = document.getElementById('clickSound');
+
+  for (let i = 1; i <= 25; i++) {
+    const cell = document.getElementById(`white-cell-${i}`);
+    whiteCells.push(cell);
+    cell.dataset.state = 'white';
+    cell.addEventListener('click', function() {
+      if (clickSound) {
+        clickSound.currentTime = 0;
+        clickSound.play();
+      }
+
+      if (this.dataset.state === 'white') {
+        this.classList.add('active-green');
+        this.classList.remove('active-red');
+        this.dataset.state = 'green';
+      } else if (this.dataset.state === 'green') {
+        this.classList.add('active-red');
+        this.classList.remove('active-green');
+        this.dataset.state = 'red';
+      } else if (this.dataset.state === 'red') {
+        this.classList.remove('active-red');
+        this.dataset.state = 'white';
+      }
+    });
+  }
+
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+  }
+
+  shuffleArray(arabicLetters);
+  const selectedLetters = arabicLetters.slice(0, 25);
+  shuffleArray(selectedLetters);
+
+  for (let i = 0; i < whiteCells.length; i++) {
+    whiteCells[i].textContent = selectedLetters[i];
+  }
+</script>
+</body>
+</html>
